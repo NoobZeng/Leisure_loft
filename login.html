@@ -4,6 +4,16 @@
 	<meta charset="UTF-8">
 	<title>首页</title>
 	<style type="text/css">
+		div:first-child {
+			width: 350px;
+			height: 400px;
+			background-color: yellow;
+		}
+
+		.panel{
+			margin: auto;
+		}
+
 		input{
 			display: block;
 			outline: none;
@@ -26,7 +36,11 @@
 
 			tabFun();
 
-			resetFun();
+			login.onclick = loginFun;
+
+			reset.onclick = resetFun;
+
+
 
 			//回车或tab键判断账号输入格式是否有误
 			function tabFun(){
@@ -44,30 +58,30 @@
 				};
 			}
 
+			//重置
 			function resetFun(){
-				reset.onclick = function(){
 					input[0].value = "";
 					input[1].value = "";
-				};
+			}
+
+			//登录
+			function loginFun(){
+				var reg = /^[0-9]*[1-9][0-9]*$/;
+				if(reg.test(input[0].value)){
+					return;
+				}else{
+					alert("账号输入格式有误!");
+				}
 			}
 
 			
 		};
 
-		
-
-		function regFun(){
-
-		}
-
 	</script>
 </head>
 <body>
 	<div>
-		<div>
-			
-		</div>
-		<div>
+		<div class="panel">
 			<input type="text" name="account" placeholder="请输入账号">
 			<input type="password" name="password" placeholder="请输入密码">
 			<button id="loginbtn">登录</button>
