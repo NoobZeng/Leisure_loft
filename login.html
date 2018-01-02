@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>首页</title>
+	<style type="text/css">
+		input{
+			display: block;
+			outline: none;
+		}
+		input::-webkit-input-placeholder{
+			color: #999;
+			-webkit-transition: color.5s;
+		}
+		input:focus::-webkit-input-placeholder,input:hover::-webkit-input-placeholder{
+			color: #c2c2c2;
+			-webkit-transition: color.5s;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var input = document.getElementsByTagName("input");
+			var login = document.getElementById("loginbtn");
+			var reset = document.getElementById("resetbtn");
+			var close = document.getElementById("closebtn");
+
+			tabFun();
+
+			resetFun();
+
+			//回车或tab键判断账号输入格式是否有误
+			function tabFun(){
+				document.onkeydown = function(e){
+					e = e || window.event;
+					if(e.keyCode == 9 || e.keyCode == 13){
+						//正整数
+						var reg = /^[0-9]*[1-9][0-9]*$/;
+						if(reg.test(input[0].value)){
+							return;
+						}else{
+							alert("账号输入格式有误!");
+						}
+					}
+				};
+			}
+
+			function resetFun(){
+				reset.onclick = function(){
+					input[0].value = "";
+					input[1].value = "";
+				};
+			}
+
+			
+		};
+
+		
+
+		function regFun(){
+
+		}
+
+	</script>
+</head>
+<body>
+	<div>
+		<div>
+			
+		</div>
+		<div>
+			<input type="text" name="account" placeholder="请输入账号">
+			<input type="password" name="password" placeholder="请输入密码">
+			<button id="loginbtn">登录</button>
+			<button id="resetbtn">重置</button>
+			<button id="closebtn">关闭</button>
+		</div>
+	</div>
+</body>
+</html>
