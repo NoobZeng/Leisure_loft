@@ -2,22 +2,45 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>首页</title>
+	<title>登录</title>
 	<style type="text/css">
-		div:first-child {
-			width: 350px;
+		.panel {
+			width: 400px;
 			height: 400px;
 			background-color: yellow;
 		}
 
-		.panel{
+		.contentpanel {
 			margin: auto;
+			width: 45%;
+			padding: 100px 0;
+		}
+
+		.closepanel {
+			width: 400px;
+			height: 40px;
+			background-color: blue;
+		}
+
+		.close_ico{
+			position: absolute;
+			float: right;
+			background-image:url('images/close.ico');
 		}
 
 		input{
 			display: block;
 			outline: none;
+			height: 25px;
+			width: 180px;
 		}
+
+		button{
+			display: inline-block;
+			width: 56.5px;
+			height: 25px;
+		}
+
 		input::-webkit-input-placeholder{
 			color: #999;
 			-webkit-transition: color.5s;
@@ -39,6 +62,8 @@
 			login.onclick = loginFun;
 
 			reset.onclick = resetFun;
+
+			close.onclick = closeFun;
 
 
 
@@ -74,16 +99,23 @@
 				}
 			}
 
-			
+			//关闭
+			function closeFun(){
+				var panel = document.getElementById("panel");
+				panel.style.display = "none";
+			}
 		};
 
 	</script>
 </head>
 <body>
-	<div>
-		<div class="panel">
-			<input type="text" name="account" placeholder="请输入账号">
-			<input type="password" name="password" placeholder="请输入密码">
+	<div class="panel" id="panel">
+		<div class="closepanel">
+			<div class="close_ico"></div>
+		</div>
+		<div class="contentpanel">
+			<input type="text" name="account" placeholder="请输入账号"><br />
+			<input type="password" name="password" placeholder="请输入密码"><br />
 			<button id="loginbtn">登录</button>
 			<button id="resetbtn">重置</button>
 			<button id="closebtn">关闭</button>
